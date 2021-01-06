@@ -22,7 +22,12 @@ app.get("/integrity/minified", (req, res) => {
 
 app.get("/download", (req, res) => {
   const index: number = parseInt(req.query.index as string) || 0;
-  res.download(Configurations.serveFolder + "\\" + dump.fsmap[index].path);
+  res.download(Configurations.serveFolder + "\\" + dump.fsmap[index].path, "", {
+    dotfiles: "allow",
+    headers: {
+      "Fs-Relative-Path": dump.fsmap[index].path,
+    },
+  });
 });
 
 export default app;
