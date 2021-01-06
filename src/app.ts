@@ -17,7 +17,7 @@ app.get("/integrity/summary", (req, res) => {
 });
 
 app.get("/integrity/minified", (req, res) => {
-  res.json({ summary: dump.minified });
+  res.json({ minified: dump.minified });
 });
 
 app.get("/download", (req, res) => {
